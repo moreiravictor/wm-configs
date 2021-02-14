@@ -1,5 +1,5 @@
 #!/bin/sh
-apps = "i3 rxvt ranger neofetch polybar compton flameshot code vim npm"
+apps = "i3 rxvt ranger neofetch polybar wal postman compton flameshot code vim npm nodejs"
 
 echo updating packages
 apt-get update
