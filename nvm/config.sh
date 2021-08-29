@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 #colors
 RED='\033[0;31m'
@@ -10,7 +10,13 @@ YELLOW='\033[1;33m'
 #vars
 installed=false
 install() {
-    nvm install $version
+    res=$(nvm install $version)
+    sub=$(echo $res | cut -d " " -f 1)
+    str=$sub"."
+    if [ $str = "Now." ] || [ $str = "Downloading." ]
+    then echo 0
+    else echo 1
+    fi
 }
 use() {
     nvm use $version
@@ -31,6 +37,9 @@ while [ $installed = false ]
 do
     echo "${RED}which node version do you want to use?${NC}"
     read version
-    install
-    use
+    res=$(install)
+    if [ $res = 0 ]
+    then    
+        use
+    fi
 done

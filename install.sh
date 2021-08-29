@@ -27,5 +27,4 @@ snap install $SNAP_APPS -y
 #configs
 
 sh ./redshift/config.sh
-
 sh ./nvm/config.sh
